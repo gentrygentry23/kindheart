@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admin</title>
 
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+  </head>
+  <body>
+  
+
+
+
+    <h2>Login to Update Texts</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <button onclick="logout()">Logout</button>
+
+
+    <section class="ftco-section-3 img" style="background-image: url();">
+    	<div class="overlay"></div>
+    	<div class="container">
+    		<div class="row d-md-flex">
+    		<div class="col-md-6 d-flex ftco-animate">
+    			<div class="img img-2 align-self-stretch" style="background-image: url();"></div>
+    		</div>
+    		<div class="col-md-6 volunteer pl-md-5 ftco-animate">
+    			<h3 class="mb-3">Change AZA Here</h3>
+    			<div action="#" class="volunter-form">
+            <div class="form-group">
+              <input type="text" id="text1" class="form-control" placeholder="First AZA">
+            </div><br>
+            <div class="form-group">
+              <input type="text" id="text2" class="form-control" placeholder="Second AZA">
+            </div><br>
+            <div class="form-group">
+                <input type="text" id="text3" class="form-control" placeholder="Third AZA">
+            </div><br>
+            <div class="form-group">
+                <input type="text" id="text4" class="form-control" placeholder="Fourth AZA">
+            </div><br>
+            <div class="form-group">
+                <button onclick="updateText()" class="btn btn-white py-3 px-5">Update</button>
+              </div>
+            <p id="status"></p>
+          </div>
+    		</div>    			
+    		</div>
+    	</div>
+    </section>
+    
+
+    <script>
+        // Firebase Config (Replace with your own)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbqr4kpGf8gkpe2dP7jXE3RbtI1mQNq6I",
+            authDomain: "aza-update.firebaseapp.com",
+            databaseURL: "https://aza-update-default-rtdb.firebaseio.com",
+            projectId: "aza-update",
+            storageBucket: "aza-update.firebasestorage.app",
+            messagingSenderId: "500899396924",
+            appId: "1:500899396924:web:53862ba28016a293c5f239"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const database = firebase.database();
+
+        function login() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    document.getElementById("status").innerText = "Logged in successfully!";
+                })
+                .catch(error => {
+                    document.getElementById("status").innerText = "Login failed: " + error.message;
+                });
+        }
+
+        function logout() {
+            auth.signOut().then(() => {
+                document.getElementById("status").innerText = "Logged out!";
+            });
+        }
+
+        function updateText() {
+            const text1 = document.getElementById("text1").value;
+            const text2 = document.getElementById("text2").value;
+            const text3 = document.getElementById("text3").value;
+            const text4 = document.getElementById("text4").value;
+            const user = auth.currentUser;
+
+            if (user) {
+                database.ref("textData").set({
+                    text1: text1,
+                    text2: text2,
+                    text3: text3,
+                    text4: text4
+                })
+                .then(() => alert("Texts updated successfully!"))
+                .catch(error => console.error("Error updating text:", error));
+            } else {
+                alert("You must be logged in to update texts.");
+            }
+        }
+    </script>
+    
+  </body>
+<html>
