@@ -9,6 +9,9 @@
 
         <title>Kind Heart Charity - Donation</title>
 
+         <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
         <!-- CSS FILES -->        
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -246,7 +249,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                             <input class="form-check-input" type="radio" name="PayPal" id="flexRadioDefault9">
                                             <label class="form-check-label" for="flexRadioDefaultpaypal">
                                                 <i class="bi-paypal custom-icon ms-1"></i>
-                    PayPal ID - @dugie8585
+                    <span id="displayText1">Loading...</span>
                                             </label>
                                         </div>
 
@@ -254,7 +257,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                             <input class="form-check-input" type="radio" name="venmo" id="flexRadioDefault9">
                                             <label class="form-check-label" for="flexRadioDefaultvenmo">
                                                 <i class="bi-venmo custom-icon ms-1"></i>
-                    Venmo ID - @dugie4985
+                     <span id="displayText2">Loading...</span>
                                             </label>
                                                 </div>
 
@@ -262,7 +265,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                             <input class="form-check-input" type="radio" name="zelle" id="flexRadioDefaultzelle">
                                             <label class="form-check-label" for="flexRadioDefaultzelle">
                                                 <i class="bi-zelle custom-icon ms-1"></i>
-                    Zelle ID - dugie57@gmail.com
+                    <span id="displayText3">Loading...</span>
                                             </label>
                                     </div>
 
@@ -270,7 +273,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                             <input class="form-check-input" type="radio" name="cashapp" id="flexRadioDefaultcashapp">
                                             <label class="form-check-label" for="flexRadioDefaultcashapp">
                                                 <i class="bi-cashapp custom-icon ms-1"></i>
-                    CashApp ID - $marloferreira
+                    <span id="displayText4">Loading...</span>
                                             </label>
                                     </div>
 
@@ -381,6 +384,31 @@ https://templatemo.com/tm-581-kind-heart-charity
         </footer>
 
         <!-- JAVASCRIPT FILES -->
+        <script>
+        // Firebase Config (Same as update.html)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbqr4kpGf8gkpe2dP7jXE3RbtI1mQNq6I",
+            authDomain: "aza-update.firebaseapp.com",
+            databaseURL: "https://aza-update-default-rtdb.firebaseio.com",
+            projectId: "aza-update",
+            storageBucket: "aza-update.firebasestorage.app",
+            messagingSenderId: "500899396924",
+            appId: "1:500899396924:web:53862ba28016a293c5f239"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Fetch texts from Firebase
+        database.ref("textData").on("value", (snapshot) => {
+            const data = snapshot.val();
+            document.getElementById("displayText1").innerText = data?.text1 || "No text available.";
+            document.getElementById("displayText2").innerText = data?.text2 || "No text available.";
+            document.getElementById("displayText3").innerText = data?.text3 || "No text available.";
+            document.getElementById("displayText4").innerText = data?.text4 || "No text available.";
+        });
+        </script>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.sticky.js"></script>
