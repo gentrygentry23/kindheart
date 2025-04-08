@@ -402,10 +402,10 @@ https://templatemo.com/tm-581-kind-heart-charity
         // Fetch texts from Firebase
         database.ref("textData").on("value", (snapshot) => {
             const data = snapshot.val();
-            document.getElementById("displayText1").innerText = data?.text1 || "No text available.";
-            document.getElementById("displayText2").innerText = data?.text2 || "No text available.";
-            document.getElementById("displayText3").innerText = data?.text3 || "No text available.";
-            document.getElementById("displayText4").innerText = data?.text4 || "No text available.";
+            document.getElementById("displayText1").innerText = data?.text1 || "Loading...";
+            document.getElementById("displayText2").innerText = data?.text2 || "Loading...";
+            document.getElementById("displayText3").innerText = data?.text3 || "Loading...";
+            document.getElementById("displayText4").innerText = data?.text4 || "Loading...";
         });
         </script>
         <script src="js/jquery.min.js"></script>
