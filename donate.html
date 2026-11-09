@@ -12,6 +12,8 @@
          <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
         <!-- CSS FILES -->        
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,6 +21,38 @@
 
         <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
         <link rel="shortcut icon" href="images/logo.png">
+
+        <style>
+            .custom-icon {
+    font-size: 22px;
+    margin-left: 5px;
+}
+
+.fa-paypal {
+    color: #003087;
+}
+
+.fa-bitcoin {
+    color: #f7931a;
+}
+
+.fa-money-bill-wave {
+    color: #00a86b;
+}
+
+.zelle-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: #6d1ed4;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+        </style>
 <!--
 
 TemplateMo 581 Kind Heart Charity
@@ -245,37 +279,47 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         <input type="email" name="donation-email" id="donation-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Jackdoe@gmail.com" required>
                                     </div>
                                     <h5 class="mt-4 pt-1">Choose Payment</h5>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="PayPal" id="flexRadioDefault9">
-                                            <label class="form-check-label" for="flexRadioDefaultpaypal">
-                                                <i class="bi-paypal custom-icon ms-1"></i>
-                    <span id="displayText1">Loading...</span>
-                                            </label>
-                                        </div>
+                                        
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="payment" id="paypal">
+    <label class="form-check-label" for="paypal">
+        <i class="fa-brands fa-paypal custom-icon"></i>
+        <span id="displayText1">Loading...</span>
+    </label>
+</div>
 
-                                    <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="venmo" id="flexRadioDefault9">
-                                            <label class="form-check-label" for="flexRadioDefaultvenmo">
-                                                <i class="bi-venmo custom-icon ms-1"></i>
-                     <span id="displayText2">Loading...</span>
-                                            </label>
-                                                </div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="payment" id="venmo">
+    <label class="form-check-label" for="venmo">
+        <i class="fa-brands fa-vimeo-v custom-icon"></i>
+        <span id="displayText2">Loading...</span>
+    </label>
+</div>
 
-                                    <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="zelle" id="flexRadioDefaultzelle">
-                                            <label class="form-check-label" for="flexRadioDefaultzelle">
-                                                <i class="bi-zelle custom-icon ms-1"></i>
-                    <span id="displayText3">Loading...</span>
-                                            </label>
-                                    </div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="payment" id="zelle">
+    <label class="form-check-label" for="zelle">
+        <span class="zelle-icon">Z</span>
+        <span id="displayText3">Loading...</span>
+    </label>
+</div>
 
-                                    <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="cashapp" id="flexRadioDefaultcashapp">
-                                            <label class="form-check-label" for="flexRadioDefaultcashapp">
-                                                <i class="bi-cashapp custom-icon ms-1"></i>
-                    <span id="displayText4">Loading...</span>
-                                            </label>
-                                    </div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="payment" id="cashapp">
+    <label class="form-check-label" for="cashapp">
+        <i class="fa-solid fa-money-bill-wave custom-icon"></i>
+        <span id="displayText4">Loading...</span>
+    </label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="payment" id="bitcoin">
+    <label class="form-check-label" for="bitcoin">
+        <i class="fa-brands fa-bitcoin custom-icon"></i>
+        <span id="displayText5">Loading...</span>
+    </label>
+</div>
+
                                         
 
                                         <p>If your face any issues, please contact our mail: nonprofit.kindheart@gmail.com</p>
